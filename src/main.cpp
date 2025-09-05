@@ -1,15 +1,17 @@
+#include "iostream";
 #include "imgui.h"
 #include "imgui-SFML.h"
 
 #include <SFML/Graphics.hpp>
 
-//Test
+#define BACKGROUND_COLOR sf::Color{100,100,190}
 
 int main() {
     sf::RenderWindow window;
     window.create(sf::VideoMode({ 1280, 720 }), "My window");
     window.setFramerateLimit(60);
     window.setVerticalSyncEnabled(true);
+
 
     if (!ImGui::SFML::Init(window))
         return -1;
@@ -29,10 +31,10 @@ int main() {
 
         // Update
         ImGui::SFML::Update(window, deltaClock.restart());
-        // ImGui::ShowDemoWindow();
+        ImGui::ShowDemoWindow();
 
         // Render
-        window.clear();
+        window.clear(BACKGROUND_COLOR);
 
         ImGui::SFML::Render(window);
 
